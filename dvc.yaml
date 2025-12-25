@@ -1,0 +1,8 @@
+stages:
+  preprocess:
+    cmd: python src/preprocess.py
+    deps:
+      - data/raw/
+      - src/preprocess.py
+    outs:
+      - data/prpcessed/cicids2017_processed.csv
