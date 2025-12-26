@@ -15,3 +15,13 @@ stages:
     outs:
       - logs/signature_alerts.csv
       - data/processed/cicids2017_with_signatures.csv
+  
+  ml_training:
+    cmd: python src/ml_trainer.py
+    deps:
+      - data/processed/cicids2017_processed.csv
+      - src/ml_trainer.py
+    outs:
+      - models/random_forest.pkl
+      - models/xgboost.json
+      - mlruns/  # Tracks all experiments

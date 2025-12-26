@@ -37,3 +37,28 @@ stages:
       hash: md5
       md5: 2ec0431ecaf677372bd37bd14534c7d8
       size: 706618775
+  ml_training:
+    cmd: python src/ml_trainer.py
+    deps:
+    - path: data/processed/cicids2017_processed.csv
+      hash: md5
+      md5: 32d51bd3a527b06d8633be067d1a68ae
+      size: 963360561
+    - path: src/ml_trainer.py
+      hash: md5
+      md5: c1a22a925058d4d0bb8204869568d5da
+      size: 4135
+    outs:
+    - path: mlruns/
+      hash: md5
+      md5: 3685ba04db3c58b1c86e1622f2a8a45e.dir
+      size: 97734162
+      nfiles: 12
+    - path: models/random_forest.pkl
+      hash: md5
+      md5: c24514848032a545ccdb6e94b23ad615
+      size: 46700497
+    - path: models/xgboost.json
+      hash: md5
+      md5: 8e618df993d6695b7a293fbb559503da
+      size: 2318331
