@@ -25,3 +25,14 @@ stages:
       - models/random_forest.pkl
       - models/xgboost.json
       - mlruns/  # Tracks all experiments
+
+  dl_training:
+    cmd: python src/dl_trainer.py
+    deps:
+      - data/processed/cicids2017_processed.csv
+      - src/dl_trainer.py
+    outs:
+      - models/lstm_model.keras
+      - models/label_encoder.pkl
+      - models/scaler.pkl
+      - docs/shap_plots/
