@@ -1,0 +1,39 @@
+schema: '2.0'
+stages:
+  preprocess:
+    cmd: python src/preprocess.py
+    deps:
+    - path: data/raw/
+      hash: md5
+      md5: acf928b43f089e74039fc8dba08e4dd7.dir
+      size: 884645759
+      nfiles: 8
+    - path: src/preprocess.py
+      hash: md5
+      md5: b0de6c029d879e288795645955361189
+      size: 1707
+    outs:
+    - path: data/processed/cicids2017_processed.csv
+      hash: md5
+      md5: 32d51bd3a527b06d8633be067d1a68ae
+      size: 963360561
+  signature_detection:
+    cmd: python src/signature_detector.py
+    deps:
+    - path: data/processed/cicids2017_processed.csv
+      hash: md5
+      md5: 32d51bd3a527b06d8633be067d1a68ae
+      size: 963360561
+    - path: src/signature_detector.py
+      hash: md5
+      md5: d4f658d8d9945da1e3f549b1e8db8c72
+      size: 3355
+    outs:
+    - path: data/processed/cicids2017_with_signatures.csv
+      hash: md5
+      md5: b1055ac195970571b0ed64d2d0c81786
+      size: 1018115100
+    - path: logs/signature_alerts.csv
+      hash: md5
+      md5: 2ec0431ecaf677372bd37bd14534c7d8
+      size: 706618775

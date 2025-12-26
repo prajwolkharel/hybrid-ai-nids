@@ -5,4 +5,13 @@ stages:
       - data/raw/
       - src/preprocess.py
     outs:
-      - data/prpcessed/cicids2017_processed.csv
+      - data/processed/cicids2017_processed.csv
+
+  signature_detection:
+    cmd: python src/signature_detector.py
+    deps:
+      - data/processed/cicids2017_processed.csv
+      - src/signature_detector.py
+    outs:
+      - logs/signature_alerts.csv
+      - data/processed/cicids2017_with_signatures.csv
