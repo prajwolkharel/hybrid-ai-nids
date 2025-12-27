@@ -36,3 +36,12 @@ stages:
       - models/label_encoder.pkl
       - models/scaler.pkl
       - docs/shap_plots/
+  
+  hybrid_ensemble:
+    cmd: python src/hybrid_nids.py
+    deps:
+      - data/processed/cicids2017_with_signatures.csv
+      - models/
+      - src/hybrid_nids.py
+    outs:
+      - logs/final_hybrid_alerts.csv
